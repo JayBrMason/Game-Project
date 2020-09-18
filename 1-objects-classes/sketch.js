@@ -2,31 +2,39 @@
 let b;
 let anotherBall;
 let thirdBall;
-let human1;
-let human2;
-
+let cloud1;
+let cloud2;
 
 
 
 
 function setup() {
   createCanvas(800, 400);
-  b = new CircularThing(0, 100,"red");
-  anotherBall = new CircularThing(200,20,"green");
-  thirdBall = new CircularThing(20, 20, "orange");
-  let human1 = new Person(255, 255, 255);
-  let human2 = new person(0, 0, 0);
+  createCanvas(800, 400);
+  b = new Ball(0, 100,"red"); //make a new ball from the Ball class and call it b.
+  thirdBall = new Ball(20, 20, "orange");
+  anotherBall = new Ball(200,20,"green");
+  cloud1 = new Cloud(100,150);
+  cloud2 = new Cloud(200,300);
 }
 
 
 function draw(){
 	background("blue");
-
+  background("blue");
+      b.drawBall(); //draw the ball called b (go look in the Ball class for the drawBall function)
+      b.moveBall(); //move the ball called b (go look in the Ball class for the moveBall function)
+      anotherBall.drawBall();
+      anotherBall.moveBall();
+      cloud1.drawCloud();
+      cloud1.moveCloud();
+      cloud2.drawCloud();
+      cloud2.moveCloud();
 
 }
 
 
-class CircularThing{
+class Ball{
 
   constructor(x,y,color){
 		this.x = x;
@@ -46,21 +54,22 @@ class CircularThing{
 }
 
 
-class Person{
-  constructor(x,y,color){
-		this.x = x;
-    		this.y = y;
-           this.color = color;
-	  }
-  drawBall(){
-    stroke(0);
-    fill(this.color);
-    ellipse(this.x,this.y,10,10);
+class Cloud {
+
+	constructor(x,y){
+    		this.x = x;
+        this.y = y;
+
 	}
-
-  moveBall(){
-    this.x = this.x+2;
-    this.y = this.y+.5;
+	drawCloud(){
+    		noStroke();
+    		fill(255);
+		    ellipse(this.x, this.y, 30, 30);
+        ellipse(this.x + 25, this.y, 30, 30);
+        ellipse(this.x + 10, this.y - 15, 30, 30);
+	}
+  moveCloud(){
+    this.x = this.x + 0.5
   }
-
+}
 //ball class from which to create new balls with similar properties.
