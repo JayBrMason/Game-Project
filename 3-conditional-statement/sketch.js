@@ -14,13 +14,13 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background("green");
 
   me.drawMe();
   me.moveMe();
 
   if (frameCount % 15 == 0) {
-      let  b = new Ball(width, random(0,height), -3);
+      let  b = new Ball(width, random(0,height), -5);
       balls.push(b);
       console.log(balls); //print the balls array to the console
     }
@@ -44,39 +44,31 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("red");
-        strokeWeight(3);
-    		fill("black");
-		    ellipse(this.x,this.y,20,20);
-        line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
-        line(this.x-10, this.y+25, this.x+10, this.y+35);
-        line(this.x+5, this.y+50,this.x+20,this.y-30);
-        line(this.x+20,this.y-30,this.x+70,this.y-20);
-        line(this.x+70,this.y-20,this.x+55,this.y+50);
-        line(this.x+55,this.y+50,this.x+10,this.y+40);
-        noFill();
-        ellipse(this.x+37.5,this.y+15,40,40);
-        line(this.x+20,this.y+32.5,this.x+42.5,this.y-10);
-        line(this.x+42.5,this.y-10,this.x+47.5,this.y+37.5);
-        line(this.x+20,this.y+10,this.x+55,this.y+17.5);
-	}
+    stroke("green");
+    strokeWeight(3);
+    fill("blue");
+    ellipse(this.x,this.y,20,20);
+    line(this.x,this.y, this.x, this.y+40);
+    line(this.x, this.y+40, this.x-20, this.y+60);
+    line(this.x, this.y+40, this.x+10, this.y+50);
+    line(this.x+10, this.y+50, this.x+5, this.y+60);
+    line(this.x, this.y+15, this.x-10, this.y+25);
+    line(this.x-10, this.y+25, this.x+10, this.y+35);
+}
+
 
 	moveMe(){
-    if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move up by speed
+    if (keyIsDown(87)) { //if you hold the up arrow, move up by speed
        this.y -= this.speed;
     }
 
-    if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
+    if (keyIsDown(83)) { // if you hold the down arrow, move down by speed
         this.y += this.speed;
     }
-    if (keyIsDown(LEFT_ARROW)) {
+    if (keyIsDown(65)) {
       this.x -= this.speed;
     }
-    if (keyIsDown(RIGHT_ARROW)) {
+    if (keyIsDown(68)) {
       this.x += this.speed;
     }
 	}
