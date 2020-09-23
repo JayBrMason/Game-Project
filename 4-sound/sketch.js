@@ -6,12 +6,15 @@ let me;
 
 let mySound;
 
-let mySound2
+let mySound2;
+
+let mySound3;
 
 function preload() {
   soundFormats('mp3', 'ogg', 'wav');
   mySound = loadSound('boing1.mp3');
   mySound2=loadSound('warhorn.wav');
+  mySound3=loadSound('Boing2.wav');
 
   }
 
@@ -67,29 +70,22 @@ class Avatar {
     line(this.x+10, this.y+50, this.x+5, this.y+60);
     line(this.x, this.y+15, this.x-10, this.y+25);
     line(this.x-10, this.y+25, this.x+10, this.y+35);
-    line(this.x+5, this.y+50,this.x+20,this.y-30);
-    line(this.x+20,this.y-30,this.x+70,this.y-20);
-    line(this.x+70,this.y-20,this.x+55,this.y+50);
-    line(this.x+55,this.y+50,this.x+10,this.y+40);
-    noFill();
-    ellipse(this.x+37.5,this.y+15,40,40);
-    line(this.x+20,this.y+32.5,this.x+42.5,this.y-10);
-    line(this.x+42.5,this.y-10,this.x+47.5,this.y+37.5);
-    line(this.x+20,this.y+10,this.x+55,this.y+17.5);
+
+
 	}
 
 	moveMe(){
-    if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move up by speed
+    if (keyIsDown(87)) { //if you hold the up arrow, move up by speed
        this.y -= this.speed;
     }
 
-    if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
+    if (keyIsDown(83)) { // if you hold the down arrow, move down by speed
         this.y += this.speed;
     }
-    if (keyIsDown(LEFT_ARROW)) {
+    if (keyIsDown(65)) {
       this.x -= this.speed;
     }
-    if (keyIsDown(RIGHT_ARROW)) {
+    if (keyIsDown(68)) {
       this.x += this.speed;
     }
 	}
@@ -115,8 +111,8 @@ class Ball {
 	drawBall(){
     stroke(0);
     strokeWeight(1);
-    fill("yellow");
-    ellipse(this.x,this.y,random(30, 50),random(30,50));
+    fill("orange");
+    ellipse(this.x,this.y,random(10, 30),random(10,30));
 	}
 
 	//update the location of the ball, so it moves across the screen
@@ -129,8 +125,8 @@ class Ball {
   	bounceBall(){
           if (this.x >= me.x-15 && this.x <= me.x+70 && this.y > me.y-40 && this.y < me.y+40){
               this.speed = -this.speed;
-            mySound.setVolume(0.1);
-            mySound.play();
+            mySound3.setVolume(0.1);
+            mySound3.play();
     		}
   	}
 
